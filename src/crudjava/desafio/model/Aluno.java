@@ -1,11 +1,11 @@
-package java.crud.desafio.model;
+package crudjava.desafio.model;
 
 public class Aluno {
 	private Integer id_aluno;
 	private String nome;
 	private Integer idade;
 
-	protected Aluno(Integer id_aluno, String nome, Integer idade) {
+	public Aluno(Integer id_aluno, String nome, Integer idade) {
 		super();
 		this.id_aluno = id_aluno;
 		this.nome = nome;
@@ -36,4 +36,10 @@ public class Aluno {
 		this.idade = idade;
 	}
 
+	@Override
+	public String toString() {
+		return "Aluno [id_aluno=" + id_aluno + ", nome=" + nome + ", idade=" + idade + "]";
+	}
+
+	
 }
