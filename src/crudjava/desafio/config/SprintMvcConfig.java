@@ -1,0 +1,47 @@
+package crudjava.desafio.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import crudjava.desafio.dao.AlunoDAOImpl;
+import crudjava.desafio.dao.IAlunoDAO;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "crudjava.desafio")
+public class SprintMvcConfig implements WebMvcConfigurer{
+	
+	@Bean
+	public DataSource getDataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/alunos");
+		dataSource.setUsername("root");
+		dataSource.setPassword("password");
+		
+		return dataSource;
+	}
+	
+	@Bean
+	public ViewResolver getViewResolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".jsp");
+		
+		return resolver;
+	}
+	
+	@Bean
+	public IAlunoDAO getAlunoDAO() {
+		return new AlunoDAOImpl(getDataSource());
+		
+	}
+}
