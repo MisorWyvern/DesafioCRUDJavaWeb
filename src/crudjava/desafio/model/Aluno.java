@@ -12,6 +12,10 @@ public class Aluno {
 		this.idade = idade;
 	}
 
+	public Aluno() {
+		
+	}
+
 	public Integer getId_aluno() {
 		return id_aluno;
 	}

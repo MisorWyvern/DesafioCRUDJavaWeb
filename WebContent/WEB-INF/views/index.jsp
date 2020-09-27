@@ -10,22 +10,27 @@
 <body>
 	<main>
 	<h1>Desafio CRUD Java Web</h1>
-	<h2>Tabela com Dados dos Alunos</h2>
-	<h3><a href="./adicionarAluno">Adicionar novo aluno</a></h3>
+	<h2>Menu Principal</h2>
+	<a href="adicionarAluno">Adicionar novo aluno</a>
 	<table>
-		<tr>
-			<td>ID Aluno</td>
-			<td>Nome</td>
-			<td>Idade</td>
-			<td>Ações</td>
-		</tr>
-		<a:forEach items="${listaDeAlunos}" var="aluno" varStatus="status">
-		<tr>
-			<td>${aluno.id_aluno}</td>
-			<td>${aluno.nome}</td>
-			<td>${aluno.idade}</td>
-		</tr>
-		</a:forEach>
+	<caption>Dados dos Alunos</caption>
+		<thead>
+			<tr>
+				<td>ID Aluno</td>
+				<td>Nome</td>
+				<td>Idade</td>
+				<td>Ações</td>
+			</tr>
+		</thead>
+			<tbody>
+			<a:forEach items="${listaDeAlunos}" var="aluno" varStatus="status">
+			<tr>
+				<td>${aluno.id_aluno}</td>
+				<td>${aluno.nome}</td>
+				<td>${aluno.idade}</td>
+			</tr>
+			</a:forEach>
+		</tbody>
 	</table>
 	
 	
