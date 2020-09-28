@@ -31,7 +31,7 @@
 				</tr>
 			</form:form>
 		</table>
-		<a href="/">Voltar</a>
+		<a href="javascript:history.back()">Voltar</a>
 		
 		
 	</main>
