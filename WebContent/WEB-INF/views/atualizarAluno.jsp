@@ -10,10 +10,10 @@
 <body>
 	<main>
 		<h1>Desafio CRUD Java Web</h1>
-		<h2>Adicionar/Atualizar Aluno</h2>
+		<h2>Atualizar Cadastro de Aluno</h2>
 		<table>
-			<form:form action="salvarAluno" method="post" modelAttribute="aluno">
-				
+			<form:form action="editarAlunoForm" method="post" modelAttribute="aluno">
+				<form:hidden path="id_aluno" />
 				<tr>
 					<td>ID Aluno:</td>
 					<td><form:input path="id_aluno" /></td>

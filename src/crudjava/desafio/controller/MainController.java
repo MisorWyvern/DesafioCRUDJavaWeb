@@ -37,12 +37,26 @@ public class MainController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/atualizarAluno", method = RequestMethod.GET)
+	public ModelAndView attAluno(ModelAndView model) {
+		Aluno attAluno = new Aluno();
+		model.addObject("aluno",attAluno);
+		model.setViewName("atualizarAluno");
+		return model;
+	}
+	
 	@RequestMapping(value = "/salvarAluno", method = RequestMethod.POST)
 	public ModelAndView salvarAluno(@ModelAttribute Aluno aluno) {
-		if(aluno.getId_aluno() == null) {
+		if(aluno.getId_aluno() != null) {
 			alunoDAO.save(aluno);
 		}
-		else {
+		
+		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value = "/editarAlunoForm", method = RequestMethod.POST)
+	public ModelAndView editarAluno(@ModelAttribute Aluno aluno) {
+		if(aluno.getId_aluno() != null) {
 			alunoDAO.update(aluno);
 		}
 		
@@ -55,7 +69,7 @@ public class MainController {
 		Integer id_aluno = Integer.parseInt(request.getParameter("id_aluno"));
 		Aluno aluno = alunoDAO.get(id_aluno);
 		
-		ModelAndView model = new ModelAndView("adicionarAluno");
+		ModelAndView model = new ModelAndView("atualizarAluno");
 		
 		model.addObject("aluno",aluno);
 				
