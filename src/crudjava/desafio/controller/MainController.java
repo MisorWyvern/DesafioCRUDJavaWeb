@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import crudjava.desafio.dao.IAlunoDAO;
@@ -59,5 +60,12 @@ public class MainController {
 		model.addObject("aluno",aluno);
 				
 		return model;
+	}
+	
+	@RequestMapping(value = "/removerAluno", method = RequestMethod.GET)
+	public ModelAndView removerAluno(@RequestParam Integer id_aluno) {
+		alunoDAO.delete(id_aluno);
+		
+		return new ModelAndView("redirect:/");
 	}
 }

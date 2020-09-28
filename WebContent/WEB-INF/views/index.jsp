@@ -28,7 +28,11 @@
 				<td>${aluno.id_aluno}</td>
 				<td>${aluno.nome}</td>
 				<td>${aluno.idade}</td>
-				<td><a href="editarAluno?id_aluno=${aluno.id_aluno}">Editar</a></td>
+				<td>
+					<a href="editarAluno?id_aluno=${aluno.id_aluno}">Editar</a>
+					&nbsp;&nbsp;
+					<a href="removerAluno?id_aluno=${aluno.id_aluno}">Remover</a>
+				</td>
 			</tr>
 			</a:forEach>
 		</tbody>
