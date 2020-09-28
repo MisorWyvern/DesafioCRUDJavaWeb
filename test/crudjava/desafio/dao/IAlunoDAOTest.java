@@ -43,7 +43,7 @@ class IAlunoDAOTest {
 
 	@Test
 	void testGet() {
-		Integer id_aluno = 1;
+		Integer id_aluno = 3;
 		Aluno aluno = dao.get(id_aluno);
 		
 		if(aluno != null) {

@@ -41,7 +41,7 @@ public class AlunoDAOImpl implements IAlunoDAO {
 			@Override
 			public Aluno extractData(ResultSet rs) throws SQLException, DataAccessException {
 				if(rs.next()) {
-					Integer id = rs.getInt(id_aluno);
+					Integer id = rs.getInt("id_aluno");
 					String nome = rs.getString("nome");
 					Integer idade = rs.getInt("idade");
 					

@@ -2,6 +2,8 @@ package crudjava.desafio.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -36,8 +38,26 @@ public class MainController {
 	
 	@RequestMapping(value = "/salvarAluno", method = RequestMethod.POST)
 	public ModelAndView salvarAluno(@ModelAttribute Aluno aluno) {
-		alunoDAO.save(aluno);
+		if(aluno.getId_aluno() == null) {
+			alunoDAO.save(aluno);
+		}
+		else {
+			alunoDAO.update(aluno);
+		}
+		
 		
 		return new ModelAndView("redirect:/");
+	}
+	
+	@RequestMapping(value = "/editarAluno", method = RequestMethod.GET)
+	public ModelAndView editarAluno(HttpServletRequest request) {
+		Integer id_aluno = Integer.parseInt(request.getParameter("id_aluno"));
+		Aluno aluno = alunoDAO.get(id_aluno);
+		
+		ModelAndView model = new ModelAndView("adicionarAluno");
+		
+		model.addObject("aluno",aluno);
+				
+		return model;
 	}
 }

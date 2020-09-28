@@ -28,6 +28,7 @@
 				<td>${aluno.id_aluno}</td>
 				<td>${aluno.nome}</td>
 				<td>${aluno.idade}</td>
+				<td><a href="editarAluno?id_aluno=${aluno.id_aluno}">Editar</a></td>
 			</tr>
 			</a:forEach>
 		</tbody>
